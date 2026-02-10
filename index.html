@@ -4,35 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Un regalo especial ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #ffebee; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; background-image: url('https://i.imgur.com/83pY6In.png'); background-size: cover; }
-        .card { background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; border: 2px solid #f8bbd0; }
-        h1 { color: #d81b60; font-size: 22px; }
-        .bear { width: 150px; margin-bottom: 10px; }
-        .gift-box { width: 100px; cursor: pointer; transition: 0.3s; }
+        body { background-color: #ffebee; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: sans-serif; padding: 20px; box-sizing: border-box; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 350px; border: 2px solid #f8bbd0; }
+        h1 { color: #d81b60; font-size: 24px; margin: 10px 0; }
+        .bear { width: 160px; display: block; margin: 0 auto; }
+        .message { color: #555; line-height: 1.5; font-size: 15px; margin: 15px 0; font-style: italic; }
+        .gift-box { width: 90px; cursor: pointer; display: block; margin: 15px auto 5px auto; transition: 0.3s; }
         .gift-box:hover { transform: scale(1.1); }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 100; flex-direction: column; }
-        .photo { max-width: 80%; border: 5px solid white; border-radius: 10px; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 100; flex-direction: column; color: white; text-align: center; padding: 20px; }
+        .photo { max-width: 90%; border: 5px solid white; border-radius: 10px; margin: 15px 0; }
+.especial-font { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 32px; 
+    color: #ffffff; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
     </style>
 </head>
 <body>
+<audio id="musica" src="https://pixabay.com/music/download/piano-moment-9835.mp3?attachment"></audio>
     <div class="card">
-        <img src="https://i.imgur.com/B9O0S50.png" class="bear">
-        <h1 id="nombreAmiga">¡Feliz San Valentín!</h1>
+        <img src="https://i.imgur.com/JDty409_d.png?maxwidth=520&shape=thumb&fidelity=high" class="bear">
+        
+        <h1>¡Feliz San Valentín!</h1>
         <p>Tengo una sorpresa para ti...</p>
-        <img src="https://i.imgur.com/vHqY7rE.gif" class="gift-box" onclick="mostrar()">
-        <p style="font-size: 12px;">(Toca la caja)</p>
+        
+        <div class="message">
+            "Miro hacia atrás y me doy cuenta de que no hay recuerdo importante en el que no estés tú. Gracias por estar a mi lado todos estos años, por ser mi refugio en los días grises y mi mayor alegria en los días de sol. Tu amistad es el regalo más constante y valioso de mi vida. Te quiero no solo por quién eres, sino por quién soy yo cuando estoy contigo.
+Es curioso cómo funciona la vida, nos alejamos por un tiempo, pero el destino nos volvió a juntar. Gracias por estar en mi vida de nuevo, por todos estos años de risas recuperadas y por hacerme sentir que, a pesar de la pausa, nuestro vínculo siempre estuvo destinado a brillar. Por los años de antes, por el tiempo en que nos extrañamos y, sobre todo, por estos últimos años en los que hemos vuelto a ser inseparables. Gracias por elegir quedarte y por hacer que nuestra amistad sea hoy más sólida que nunca. ¡Por muchos años más compartiendo la vida!¡Gracias por tanto!¡Te quiero muchísimo!"
+        </div>
+        
+        <img src="https://i.imgur.com/4obnxZr_d.gif?maxwidth=520&shape=thumb&fidelity=high" class="gift-box" onclick="mostrar()">
+        <p style="font-size: 11px; color: #888;">(Toca el regalo)</p>
     </div>
+
     <div class="overlay" id="overlay" onclick="ocultar()">
-        <img src="https://i.imgur.com/6X2VbXf.png" class="photo">
-        <p style="color:white; margin-top:10px;">¡Te quiero mucho!</p>
+        <p class="especial-font">¡Eres la mejor amiga del mundo!</p>
+        <img src="https://i.imgur.com/6llHLoZ_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" class="photo">
+        <p>Toca para cerrar</p>
     </div>
+
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        let nombre = urlParams.get('nombre');
-        if (nombre) { document.getElementById('nombreAmiga').innerText = "¡Feliz San Valentín, " + nombre.replace(/_/g, ' ') + "!"; }
-        function mostrar() { document.getElementById('overlay').style.display = 'flex'; }
-        function ocultar() { document.getElementById('overlay').style.display = 'none'; }
+       var cancion = document.getElementById("musica");
+
+    function mostrar() { 
+    document.getElementById('overlay').style.display = 'flex'; 
+    var cancion = document.getElementById("musica");
+    cancion.play().catch(function(error) {
+        console.log("El audio no pudo reproducirse automáticamente: " + error);
+    });
+}
+
+    function ocultar() { 
+        document.getElementById('overlay').style.display = 'none'; 
+        cancion.pause(); // <-- Esto la apaga al cerrar la foto
+        cancion.currentTime = 0; 
+    }
     </script>
 </body>
 </html>
