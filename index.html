@@ -3,111 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un regalo especial para ti ❤️</title>
+    <title>Un regalo especial ❤️</title>
     <style>
-        body {
-            background-color: #ffebee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-            background-image: url('URL_DE_TU_IMAGEN_DE_OSITO'); 
-            background-size: cover;
-            background-position: center;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2);
-            text-align: center;
-            max-width: 320px;
-            width: 90%;
-            z-index: 10;
-            border: 2px solid #f8bbd0;
-            position: relative;
-            backdrop-filter: blur(5px);
-        }
-
-        h1 { color: #d81b60; font-size: 24px; }
-        p { color: #712a41; line-height: 1.5; font-size: 16px; }
-
-        .gift-box {
-            width: 120px;
-            height: 120px;
-            background-image: url('URL_DE_TU_GIF_DE_CAJITA');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin: 20px auto 0;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
+        body { background-color: #ffebee; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; background-image: url('https://i.imgur.com/83pY6In.png'); background-size: cover; }
+        .card { background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 300px; border: 2px solid #f8bbd0; }
+        h1 { color: #d81b60; font-size: 22px; }
+        .bear { width: 150px; margin-bottom: 10px; }
+        .gift-box { width: 100px; cursor: pointer; transition: 0.3s; }
         .gift-box:hover { transform: scale(1.1); }
-
-        .photo-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            flex-direction: column;
-        }
-
-        .photo-container {
-            max-width: 80%;
-            max-height: 70%;
-            border: 5px solid white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .photo-container img { width: 100%; height: auto; display: block; }
-
-        .close-btn {
-            margin-top: 15px;
-            background: #e91e63;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 100; flex-direction: column; }
+        .photo { max-width: 80%; border: 5px solid white; border-radius: 10px; }
     </style>
 </head>
 <body>
-
-    <div class="card" id="mainCard">
+    <div class="card">
+        <img src="https://i.imgur.com/B9O0S50.png" class="bear">
         <h1 id="nombreAmiga">¡Feliz San Valentín!</h1>
-        <p>Gracias por tantos años de amistad sincera. Eres increíble.</p>
-        <div class="gift-box" onclick="abrirSorpresa()"></div>
-        <p style="font-size: 12px; font-style: italic;">(Toca la cajita para una sorpresa)</p>
+        <p>Tengo una sorpresa para ti...</p>
+        <img src="https://i.imgur.com/vHqY7rE.gif" class="gift-box" onclick="mostrar()">
+        <p style="font-size: 12px;">(Toca la caja)</p>
     </div>
-
-    <div class="photo-overlay" id="overlay">
-        <div class="photo-container">
-            <img src="URL_DE_TU_FOTO_CON_ELLA" alt="Nosotras">
-        </div>
-        <button class="close-btn" onclick="cerrarSorpresa()">Cerrar x</button>
+    <div class="overlay" id="overlay" onclick="ocultar()">
+        <img src="https://i.imgur.com/6X2VbXf.png" class="photo">
+        <p style="color:white; margin-top:10px;">¡Te quiero mucho!</p>
     </div>
-
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         let nombre = urlParams.get('nombre');
-        if (nombre) {
-            nombre = nombre.replace(/_/g, ' '); 
-            document.getElementById('nombreAmiga').innerText = "¡Feliz San Valentín, " + nombre + "!";
-        }
-
-        function abrirSorpresa() { document.getElementById('overlay').style.display = 'flex'; }
-        function cerrarSorpresa() { document.getElementById('overlay').style.display = 'none'; }
+        if (nombre) { document.getElementById('nombreAmiga').innerText = "¡Feliz San Valentín, " + nombre.replace(/_/g, ' ') + "!"; }
+        function mostrar() { document.getElementById('overlay').style.display = 'flex'; }
+        function ocultar() { document.getElementById('overlay').style.display = 'none'; }
     </script>
 </body>
 </html>
