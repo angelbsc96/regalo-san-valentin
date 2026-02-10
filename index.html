@@ -15,12 +15,23 @@
         .gift-box:hover { transform: scale(1.1); }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 100; flex-direction: column; color: white; text-align: center; padding: 20px; }
         .photo { max-width: 90%; border: 5px solid white; border-radius: 10px; margin: 15px 0; }
+display: none; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
 .especial-font { 
     font-family: 'Dancing Script', cursive; 
-    font-size: 32px; 
+    font-size: 26px; /* Bajamos un poco más el tamaño para asegurar que quepa */
     color: #ffffff; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin-bottom: 20px;
+    width: 90%;      /* No le des el 100%, dale el 90% para que tenga aire a los lados */
+    margin-left: auto; 
+    margin-right: auto;
+    display: block;
+    text-align: center;
 }
     </style>
 </head>
